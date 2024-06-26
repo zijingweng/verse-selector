@@ -14,9 +14,9 @@ book_names = {
 }
 
 # filter with chinese pinyin and first letters
-# class ExtendedQSortFilterProxyModel(QSortFilterProxyModel):
-#     def __init__(self, parent=None):
-#         super(ExtendedQSortFilterProxyModel, self).__init__(parent)
+class ExtendedQSortFilterProxyModel(QSortFilterProxyModel):
+    def __init__(self, parent=None):
+        super(ExtendedQSortFilterProxyModel, self).__init__(parent)
 
 #     def filterAcceptsRow(self, source_row, source_parent):
 #         model = self.sourceModel()
@@ -41,8 +41,7 @@ class ExtendedComboBox(QComboBox):
         self.setFocusPolicy(Qt.FocusPolicy.StrongFocus)
         self.setEditable(True)
         # add a filter model to filter matching items （uncomment to enable searching with chinese pinyin and first letters）
-        # self.pFilterModel = ExtendedQSortFilterProxyModel(self)
-        self.pFilterModel = QSortFilterProxyModel(self)
+        self.pFilterModel = ExtendedQSortFilterProxyModel(self)
         self.pFilterModel.setFilterCaseSensitivity(Qt.CaseSensitivity.CaseInsensitive)
         self.pFilterModel.setSourceModel(self.model())
 
